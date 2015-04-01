@@ -1,38 +1,55 @@
 package appewtc.masterung.fragmenttransaction;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.widget.Button;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends FragmentActivity{
+
+    private Button btnFirst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+        //About Main Fragment
+        MainFragment objMainFragment = new MainFragment();
+        FragmentManager objFragmentManager = getSupportFragmentManager();
+        FragmentTransaction objFragmentTransaction = objFragmentManager.beginTransaction();
+        objFragmentTransaction.add(R.id.fragment_container, objMainFragment);
+        objFragmentTransaction.commit();
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        //Click MainButton
+        Button btnMain = (Button) findViewById(R.id.btnMain);
+        btnMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainFragment callMainFragment = new MainFragment();
+                FragmentManager callFragmentManager = getSupportFragmentManager();
+                FragmentTransaction callFragmentTransaction = callFragmentManager.beginTransaction();
+                callFragmentTransaction.add(R.id.fragment_container, callMainFragment);
+                callFragmentTransaction.commit();
+            }   // event
+        });
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        btnFirst = (Button) findViewById(R.id.btnFirst);
+        btnFirst.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirstFragment objFirstFragment = new FirstFragment();
+                FragmentManager objFragmentManager = getSupportFragmentManager();
+                FragmentTransaction objFragmentTransaction = objFragmentManager.beginTransaction();
+                objFragmentTransaction.add(R.id.fragment_container, objFirstFragment);
+                objFragmentTransaction.commit();
+            }   // event
+        });
 
-        return super.onOptionsItemSelected(item);
-    }
-}
+    }   // onCreate
+
+
+}   // Main Class
