@@ -17,11 +17,11 @@ public class MainActivity extends FragmentActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //About Main Fragment
+        // เป็นการสร้าง Fragment แรกไปที่ Activity ก่อน
         MainFragment objMainFragment = new MainFragment();
         FragmentManager objFragmentManager = getSupportFragmentManager();
         FragmentTransaction objFragmentTransaction = objFragmentManager.beginTransaction();
-        objFragmentTransaction.add(R.id.fragment_container, objMainFragment);
+        objFragmentTransaction.add(R.id.fragment_container, objMainFragment);   // add Fragment
         objFragmentTransaction.commit();
 
         //Click MainButton
@@ -29,10 +29,12 @@ public class MainActivity extends FragmentActivity{
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainFragment callMainFragment = new MainFragment();
+                MainFragment callMainFragment = new MainFragment(); // Create Instant MainFragment
                 FragmentManager callFragmentManager = getSupportFragmentManager();
                 FragmentTransaction callFragmentTransaction = callFragmentManager.beginTransaction();
-                callFragmentTransaction.add(R.id.fragment_container, callMainFragment);
+//                callFragmentTransaction.add(R.id.fragment_container, callMainFragment);
+                callFragmentTransaction.replace(R.id.fragment_container, callMainFragment);
+                callFragmentTransaction.addToBackStack(null);
                 callFragmentTransaction.commit();
             }   // event
         });
@@ -44,7 +46,9 @@ public class MainActivity extends FragmentActivity{
                 FirstFragment objFirstFragment = new FirstFragment();
                 FragmentManager objFragmentManager = getSupportFragmentManager();
                 FragmentTransaction objFragmentTransaction = objFragmentManager.beginTransaction();
-                objFragmentTransaction.add(R.id.fragment_container, objFirstFragment);
+//                objFragmentTransaction.add(R.id.fragment_container, objFirstFragment);
+                objFragmentTransaction.replace(R.id.fragment_container, objFirstFragment);
+                objFragmentTransaction.addToBackStack(null);
                 objFragmentTransaction.commit();
             }   // event
         });
@@ -55,7 +59,9 @@ public class MainActivity extends FragmentActivity{
         SecondFragment objSecondFragment = new SecondFragment();                            // Create Instant
         FragmentManager objFragmentManager = getSupportFragmentManager();
         FragmentTransaction objFragmentTransaction = objFragmentManager.beginTransaction(); // Create Transaction
-        objFragmentTransaction.add(R.id.fragment_container, objSecondFragment);
+//        objFragmentTransaction.add(R.id.fragment_container, objSecondFragment);
+        objFragmentTransaction.replace(R.id.fragment_container, objSecondFragment);
+        objFragmentTransaction.addToBackStack(null);
         objFragmentTransaction.commit();
     }
 
