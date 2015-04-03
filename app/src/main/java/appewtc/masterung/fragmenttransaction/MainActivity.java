@@ -51,5 +51,13 @@ public class MainActivity extends FragmentActivity{
 
     }   // onCreate
 
+    public void clickSecond(View view) {
+        SecondFragment objSecondFragment = new SecondFragment();                            // Create Instant
+        FragmentManager objFragmentManager = getSupportFragmentManager();
+        FragmentTransaction objFragmentTransaction = objFragmentManager.beginTransaction(); // Create Transaction
+        objFragmentTransaction.add(R.id.fragment_container, objSecondFragment);
+        objFragmentTransaction.commit();
+    }
+
 
 }   // Main Class
